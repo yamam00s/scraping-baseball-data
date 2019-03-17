@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const puppeteer = require('puppeteer');
+const BaseballJsonList = require('./modules/BaseballJsonList');
 
 try {
   (async () => {
@@ -15,9 +16,8 @@ try {
       return handledDataList;
     });
 
-    extractedDataList.forEach((data) => {
-      console.log(data);
-    });
+    const BaseballJson = await new BaseballJsonList(extractedDataList);
+    await BaseballJson.createBatterDataList();
 
     browser.close();
   })();
