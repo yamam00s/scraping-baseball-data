@@ -9,7 +9,7 @@ try {
       waitUntil: 'domcontentloaded',
     });
 
-    const listSelector = '.NpbPlSt tr:not(.yjMS)';
+    const listSelector = 'table.NpbPlSt tr:not(.yjMS)'; // .yjMSはtableの上下にある項目名のため除外
     const dataList = await page.$$eval(listSelector, text => text.map(data => data.textContent));
 
     await dataList.forEach((data) => {
