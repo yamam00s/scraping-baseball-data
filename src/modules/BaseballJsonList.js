@@ -9,7 +9,7 @@ module.exports = class BaseballJsonList {
     const resultDataList = this.dataList.map((dataList) => {
       const keyAddDataList = dataList.reduce((prev, current, index) => {
         // eslint-disable-next-line no-param-reassign
-        if (current !== '') prev[batterColumnList[index]] = current;
+        prev[batterColumnList[index]] = current;
         return prev;
       }, {});
       return keyAddDataList;

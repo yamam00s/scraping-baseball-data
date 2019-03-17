@@ -10,14 +10,27 @@ try {
       waitUntil: 'domcontentloaded',
     });
 
-    const listSelector = 'table.NpbPlSt tr:not(.yjMS)'; // .yjMSはtableの上下にある項目名のため除外
+    // const listSelector = 'table.NpbPlSt tr:not(.yjMS)'; // .yjMSはtableの上下にある項目名のため除外
+    const listSelector = 'table.NpbPlSt tr:nth-child(3)'; // .yjMSはtableの上下にある項目名のため除外
     const extractedDataList = await page.$$eval(listSelector, (element) => {
-      const handledDataList = element.map(data => data.textContent.split(/\n/));
+      // const textDataList = element.map(data => data.textContent.split(/\n/));
+      // const handledDataList = textDataList.filter(data => data);
+      // return handledDataList;
+
+      const handledDataList = element.reduce((prev, current) => {
+        if (current.textContent.split(/\n/) !== 0) prev.push(current.textContent.split(/\n/));
+        return prev;
+      }, []);
       return handledDataList;
     });
 
-    const BaseballJson = await new BaseballJsonList(extractedDataList);
-    await BaseballJson.createBatterDataList();
+    extractedDataList.forEach((datas) => {
+      datas.forEach((data) => {
+        console.log(data.length);
+      });
+    });
+    // const BaseballJson = await new BaseballJsonList(extractedDataList);
+    // await BaseballJson.createBatterDataList();
 
     browser.close();
   })();
