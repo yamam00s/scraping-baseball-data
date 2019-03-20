@@ -15,8 +15,9 @@ module.exports = class BaseballJsonList {
       return keyAddDataList;
     });
 
-    // debug
+    // For Debug
     resultDataList.forEach((data) => {
+      // eslint-disable-next-line no-console
       console.log(data);
     });
   }
