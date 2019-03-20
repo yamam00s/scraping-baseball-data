@@ -14,6 +14,8 @@ module.exports = class BaseballJsonList {
       }, {});
       return keyAddDataList;
     });
+
+    // debug
     resultDataList.forEach((data) => {
       console.log(data);
     });
