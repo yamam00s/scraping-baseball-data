@@ -6,7 +6,7 @@ module.exports = class BaseballJsonList {
   }
 
   createBatterDataList() {
-    const resultDataList = this.dataList.map((dataList) => {
+    const resultDataList = this.dataList.map(dataList => {
       const keyAddDataList = dataList.reduce((prev, current, index) => {
         // eslint-disable-next-line no-param-reassign
         prev[batterColumnList[index]] = current;
@@ -16,7 +16,7 @@ module.exports = class BaseballJsonList {
     });
 
     // For Debug
-    resultDataList.forEach((data) => {
+    resultDataList.forEach(data => {
       // eslint-disable-next-line no-console
       console.log(data);
     });
