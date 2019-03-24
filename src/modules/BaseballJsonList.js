@@ -15,10 +15,11 @@ module.exports = class BaseballJsonList {
       return keyAddDataList;
     });
 
-    // For Debug
-    resultDataList.forEach(data => {
-      // eslint-disable-next-line no-console
-      console.log(data);
-    });
+    return resultDataList;
+    // For data Debug
+    // resultDataList.forEach(data => {
+    // eslint-disable-next-line no-console
+    // console.log(data);
+    // });
   }
 };
