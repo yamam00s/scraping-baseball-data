@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const puppeteer = require('puppeteer');
-const BaseballJsonList = require('./modules/BaseballJsonList');
+const BaseballDataController = require('./controllers/BaseballData');
 
 module.exports = (async () => {
   const browser = await puppeteer.launch({
@@ -27,10 +27,10 @@ module.exports = (async () => {
     return handledDataList;
   });
 
-  const BaseballJson = await new BaseballJsonList(extractedDataList);
-  const BaseballJsonDataList = await BaseballJson.createBatterDataList();
+  const BaseballData = await new BaseballDataController(extractedDataList);
+  const BaseballDataList = await BaseballData.createBatterDataList();
 
   await browser.close();
 
-  return BaseballJsonDataList;
+  return BaseballDataList;
 })();
