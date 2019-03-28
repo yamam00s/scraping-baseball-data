@@ -1,1 +1,219 @@
-!function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var o in t)n.d(r,o,function(e){return t[e]}.bind(null,o));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=0)}([function(t,e,n){t.exports=n(1)},function(t,e,n){const r=n(2),o=n(3);t.exports=(async()=>{const t=await r.launch({args:["--no-sandbox","--disable-setuid-sandbox"]}),e=await t.newPage();await e.goto("https://baseball.yahoo.co.jp/npb/stats/batter?series=5&type=1",{waitUntil:"domcontentloaded"});const n=await e.$$eval("table.NpbPlSt tr:not(.yjMS)",t=>{return t.reduce((t,e)=>{const n=e.textContent.split(/\n/).filter(t=>""!==t);return t.push(n),t},[])}),a=await new o(n),u=await a.createBatterDataList();return await t.close(),console.log(u),u})()},function(t,e){t.exports=require("puppeteer")},function(t,e,n){const r=n(4);t.exports=class{constructor(t=[]){this.dataList=t}createBatterDataList(){return this.dataList.map(t=>{return t.reduce((t,e,n)=>(t[r[n]]=e,t),{})})}}},function(t,e){t.exports=["順位","名前","チーム","打率","試合","打席","打数","安打","二塁打","三塁打","本塁打","塁打","打点","得点","三振","四球","死球","犠打","犠飛","盗塁","盗塁死","併殺打","出塁率","長打率","OPS","得点圏","失策"]}]);
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["ScrapingLibrary"] = factory();
+	else
+		root["ScrapingLibrary"] = factory();
+})(global, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(1);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* eslint-disable no-console */
+const puppeteer = __webpack_require__(2);
+const BaseballDataController = __webpack_require__(3);
+
+module.exports = (async () => {
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
+  const page = await browser.newPage();
+  await page.goto(
+    'https://baseball.yahoo.co.jp/npb/stats/batter?series=5&type=1',
+    {
+      waitUntil: 'domcontentloaded'
+    }
+  );
+
+  const listSelector = 'table.NpbPlSt tr:not(.yjMS)'; // .yjMSはtableの上下にある項目名のため除外
+  const extractedDataList = await page.$$eval(listSelector, element => {
+    const handledDataList = element.reduce((prev, current) => {
+      // 多重配列作成時にblankなデータは取り除く
+      const currentTextList = current.textContent
+        .split(/\n/)
+        .filter(data => data !== '');
+      prev.push(currentTextList);
+      return prev;
+    }, []);
+    return handledDataList;
+  });
+
+  const BaseballData = await new BaseballDataController(extractedDataList);
+  const BaseballDataList = await BaseballData.createBatterDataList();
+
+  await browser.close();
+
+  return BaseballDataList;
+})();
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("puppeteer");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const batterColumnList = __webpack_require__(4);
+
+module.exports = class BaseballJsonList {
+  constructor(dataList = []) {
+    this.dataList = dataList;
+  }
+
+  createBatterDataList() {
+    const resultDataList = this.dataList.map(dataList => {
+      const keyAddDataList = dataList.reduce((prev, current, index) => {
+        // eslint-disable-next-line no-param-reassign
+        prev[batterColumnList[index]] = current;
+        return prev;
+      }, {});
+      return keyAddDataList;
+    });
+
+    return resultDataList;
+    // For data Debug
+    // resultDataList.forEach(data => {
+    // console.log(data);
+    // });
+  }
+};
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = [
+  '順位',
+  '名前',
+  'チーム',
+  '打率',
+  '試合',
+  '打席',
+  '打数',
+  '安打',
+  '二塁打',
+  '三塁打',
+  '本塁打',
+  '塁打',
+  '打点',
+  '得点',
+  '三振',
+  '四球',
+  '死球',
+  '犠打',
+  '犠飛',
+  '盗塁',
+  '盗塁死',
+  '併殺打',
+  '出塁率',
+  '長打率',
+  'OPS',
+  '得点圏',
+  '失策'
+];
+
+
+/***/ })
+/******/ ]);
+});
