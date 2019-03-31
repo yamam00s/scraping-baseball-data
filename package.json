@@ -3,7 +3,7 @@
     "lint": "eslint src/* --fix"
   },
   "dependencies": {
-    "puppeteer": "^1.13.0"
+    "puppeteer": "^1.14.0"
   },
   "devDependencies": {
     "eslint": "^5.15.2",
