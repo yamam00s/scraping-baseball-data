@@ -2,8 +2,8 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 const config = {
-  // mode: 'production',
-  mode: 'none',
+  mode: 'production',
+  // mode: 'none',
   target: 'node',
   externals: [nodeExternals()],
 
@@ -12,7 +12,7 @@ const config = {
   },
 
   output: {
-    path: path.resolve(__dirname, 'functions'),
+    path: path.resolve(__dirname, 'dist'),
     library: 'ScrapingLibrary',
     libraryTarget: 'umd',
     filename: '[name].bundle.js'
