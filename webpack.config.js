@@ -12,7 +12,7 @@ const config = {
   },
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'functions'),
     library: 'ScrapingLibrary',
     libraryTarget: 'umd',
     filename: '[name].bundle.js'
