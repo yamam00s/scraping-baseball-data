@@ -7,12 +7,9 @@ module.exports = (async () => {
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
   const page = await browser.newPage();
-  await page.goto(
-    'https://baseball.yahoo.co.jp/npb/stats/batter?series=5&type=1',
-    {
-      waitUntil: 'domcontentloaded'
-    }
-  );
+  await page.goto('https://baseball.yahoo.co.jp/npb/stats/batter?series=2', {
+    waitUntil: 'domcontentloaded'
+  });
 
   const listSelector = 'table.NpbPlSt tr:not(.yjMS)'; // .yjMSはtableの上下にある項目名のため除外
   const extractedDataList = await page.$$eval(listSelector, element => {
