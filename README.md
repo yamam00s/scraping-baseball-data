@@ -1,2 +1,15 @@
 # scraping-baseball-data
-日本プロ野球のデータをスクレイピング
+Pacific League batter only
+
+## Project setup
+```
+yarn install
+```
+
+### Compiles and minifies for production
+```
+yarn run webpack
+```
+
+
+
