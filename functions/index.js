@@ -8,8 +8,8 @@ const scrapingApp = require('./app.bundle');
 exports.scrapingBaseball = functions.https.onRequest(
   async (request, response) => {
     const scrapingData = await scrapingApp;
-    // local環境へのCORS設定
-    response.set('Access-Control-Allow-Origin', 'http://localhost:8080');
+    // nuxtのlocal環境へのCORS設定
+    response.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     response.send(scrapingData);
   }
 );
