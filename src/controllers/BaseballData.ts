@@ -1,7 +1,9 @@
 const batterColumnList = require('../models/batterColumnList');
 
 module.exports = class BaseballJsonList {
-  constructor(dataList = []) {
+  private dataList: any;
+
+  constructor(dataList: any) {
     this.dataList = dataList;
   }
 

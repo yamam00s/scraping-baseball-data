@@ -4,7 +4,7 @@ const scrapingApp = require('./app.bundle');
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
-//
+
 exports.scrapingBaseball = functions.https.onRequest(
   async (request, response) => {
     const scrapingData = await scrapingApp;
