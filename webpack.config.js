@@ -8,7 +8,7 @@ const config = {
   externals: [nodeExternals()],
 
   entry: {
-    app: ['./src/app.js']
+    app: ['./src/app.ts']
   },
 
   output: {
@@ -23,8 +23,17 @@ const config = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
+      },
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
       }
     ]
+  },
+  // import 文で .ts ファイルを解決するため
+  resolve: {
+    extensions: [".ts"]
   }
 };
 
