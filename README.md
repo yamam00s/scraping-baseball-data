@@ -1,20 +1,47 @@
 # scraping-baseball-data
-Pacific League batter only
+
+## Parameters
+| Name | Type | Required | Description
+----|----|:---:|----|----|----
+| league | String | ○ | 'central' or 'pacific'
+| type | String | ○ | 'batter' or 'pitcher'
+
+## Example Response
+```
+Status: 200 OK
+```
+
+```
+[
+  Object {RANK: "1", NAME: "千賀 滉大", TEAM: "（ソ）", ERA: "1.26", APP: "8", …}
+  Object {RANK: "2", NAME: "大竹 耕太郎", TEAM: "（ソ）", ERA: "1.43", APP: "7", …}
+  Object {RANK: "3", NAME: "有原 航平", TEAM: "（日）", ERA: "1.47", APP: "7", …}
+  Object {RANK: "4", NAME: "山本 由伸", TEAM: "（オ）", ERA: "1.57", APP: "7", …}
+  Object {RANK: "5", NAME: "榊原 翼", TEAM: "（オ）", ERA: "2.17", APP: "7", …}
+  Object {RANK: "6", NAME: "涌井 秀章", TEAM: "（ロ）", ERA: "3.14", APP: "7", …}
+  Object {RANK: "7", NAME: "二木 康太", TEAM: "（ロ）", ERA: "3.43", APP: "7", …}
+  Object {RANK: "8", NAME: "山岡 泰輔", TEAM: "（オ）", ERA: "3.44", APP: "8", …}
+  Object {RANK: "9", NAME: "上沢 直之", TEAM: "（日）", ERA: "3.83", APP: "7", …}
+  Object {RANK: "10", NAME: "今井 達也", TEAM: "（西）", ERA: "4.24", APP: "8", …}
+  Object {RANK: "11", NAME: "美馬 学", TEAM: "（楽）", ERA: "5.06", APP: "8", …}
+  Object {RANK: "12", NAME: "多和田 真三郎", TEAM: "（西）", ERA: "5.29", APP: "8", …}
+]
+```
 
 ## Project setup
 ```
-yarn install
+$ yarn install
 ```
 
 ### Compiles and minifies for production
 ```
-yarn run webpack
+$ yarn run webpack
 ```
 
 ### Name of key to be responded
-```
-BATTER
 
+#### BATTER
+```
   'RANK', // 順位
   'NAME', // 名前
   'TEAM', // 所属チーム
@@ -44,9 +71,8 @@ BATTER
   'E' // ERRORS 失策数
 ```
 
+#### PITCHER
 ```
-PITCHER
-
   'RANK', // 順位
   'NAME', // 名前
   'TEAM', // 所属チーム
