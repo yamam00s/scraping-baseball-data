@@ -1,13 +1,19 @@
-/* eslint-disable no-console */
 const puppeteer = require('puppeteer');
 const BaseballDataController = require('./controllers/BaseballData');
 
-module.exports = (async () => {
+const createEndpoint = (({league, type}) => {
+  const SERIES = league === 'central' ? 1 : 2;
+  return `https://baseball.yahoo.co.jp/npb/stats/${type}?series=${SERIES}`
+});
+
+module.exports = (async ({league, type}) => {
+  const endPoint = createEndpoint({league, type});
+
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
   const page = await browser.newPage();
-  await page.goto('https://baseball.yahoo.co.jp/npb/stats/batter?series=2', {
+  await page.goto(endPoint, {
     waitUntil: 'domcontentloaded'
   });
 
@@ -25,9 +31,9 @@ module.exports = (async () => {
   });
 
   const BaseballData = await new BaseballDataController(extractedDataList);
-  const BaseballDataList = await BaseballData.createBatterDataList();
+  const BaseballDataList = await BaseballData.createList(type);
 
   await browser.close();
 
   return BaseballDataList;
-})();
+});

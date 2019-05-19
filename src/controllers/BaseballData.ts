@@ -1,4 +1,5 @@
 const batterColumnList = require('../models/batterColumnList');
+const pitcherColumnList = require('../models/pitcherColumnList');
 
 module.exports = class BaseballJsonList {
   private dataList: any;
@@ -7,20 +8,17 @@ module.exports = class BaseballJsonList {
     this.dataList = dataList;
   }
 
-  createBatterDataList() {
+  createList(type: string) {
+    const columnList = type === 'batter' ? batterColumnList : pitcherColumnList;
     const resultDataList = this.dataList.map(dataList => {
       const keyAddDataList = dataList.reduce((prev, current, index) => {
         // eslint-disable-next-line no-param-reassign
-        prev[batterColumnList[index]] = current;
+        prev[columnList[index]] = current;
         return prev;
       }, {});
       return keyAddDataList;
     });
 
     return resultDataList;
-    // For data Debug
-    // resultDataList.forEach(data => {
-    // console.log(data);
-    // });
   }
 };
