@@ -8,12 +8,12 @@ exports.scrapingBaseball = functions.https.onRequest(async (req, res) => {
   // nuxtのlocal環境へのCORS設定
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 
-  if (!req.body.league || !req.body.type) {
+  if (!req.query.league || !req.query.type) {
     res.status(400).send('Please define a parameter!');
   } else {
     const scrapingData = await scrapingApp({
-      league: req.body.league,
-      type: req.body.type
+      league: req.query.league,
+      type: req.query.type
     });
     res.status(200).send(scrapingData);
   }
