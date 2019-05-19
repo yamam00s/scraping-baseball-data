@@ -1,10 +1,10 @@
 # scraping-baseball-data
 
 ## Parameters
-| Name | Type | Required | Description
-----|----|:---:|----|----|----
-| league | String | ○ | 'central' or 'pacific'
-| type | String | ○ | 'batter' or 'pitcher'
+| Name | Type | Required | Description |
+|----|----|:---:|----|
+| league | String | ○ | 'central' or 'pacific' |
+| type | String | ○ | 'batter' or 'pitcher' |
 
 ## Example Response
 ```
