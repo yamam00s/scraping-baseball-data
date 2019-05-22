@@ -5,8 +5,13 @@ const scrapingApp = require('./app.bundle');
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
 exports.scrapingBaseball = functions.https.onRequest(async (req, res) => {
-  // nuxtのlocal環境へのCORS設定
-  res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+  // CORS設定
+  res.set(
+    'Access-Control-Allow-Origin',
+    'https://sabermetrics-7a6fc.firebaseapp.com'
+  );
+  res.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST');
+  res.set('Access-Control-Allow-Headers', 'Content-Type');
 
   if (!req.query.league || !req.query.type) {
     res.status(400).send('Please define a parameter!');
