@@ -26,4 +26,4 @@ module.exports = [
   'OPS', // ON BASE PLUS SLUGGING PERCENTAGE
   'RISP', // RUNNER IN SCORING POSITION 得点圏
   'E' // ERRORS 失策数
-];
+]: string[];

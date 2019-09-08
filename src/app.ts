@@ -1,13 +1,16 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const puppeteer = require('puppeteer');
-const BaseballDataController = require('./controllers/BaseballData');
+const BaseballDataController = require('./controllers/BaseballData.ts');
 
-const createEndpoint = (({league, type}) => {
-  const SERIES = league === 'central' ? 1 : 2;
-  return `https://baseball.yahoo.co.jp/npb/stats/${type}?series=${SERIES}`
-});
+type apiParam = { league: string; type: number };
 
-module.exports = (async ({league, type}) => {
-  const endPoint = createEndpoint({league, type});
+const createEndpoint = ({ league, type }: apiParam): string => {
+  const SERIES: number = league === 'central' ? 1 : 2;
+  return `https://baseball.yahoo.co.jp/npb/stats/${type}?series=${SERIES}`;
+};
+
+module.exports = async ({ league, type }: apiParam): Promise<string> => {
+  const endPoint: string = createEndpoint({ league, type });
 
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -36,4 +39,4 @@ module.exports = (async ({league, type}) => {
   await browser.close();
 
   return BaseballDataList;
-});
+};

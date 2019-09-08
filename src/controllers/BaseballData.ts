@@ -1,17 +1,18 @@
-const batterColumnList = require('../models/batterColumnList');
-const pitcherColumnList = require('../models/pitcherColumnList');
+/* eslint-disable @typescript-eslint/no-var-requires */
+const batterColumnList = require('../models/batterColumnList.ts');
+const pitcherColumnList = require('../models/pitcherColumnList.ts');
 
 module.exports = class BaseballJsonList {
-  private dataList: any;
+  private dataList: stirng[];
 
-  constructor(dataList: any) {
+  constructor(dataList: stirng[]) {
     this.dataList = dataList;
   }
 
-  createList(type: string) {
-    const columnList = type === 'batter' ? batterColumnList : pitcherColumnList;
-    const resultDataList = this.dataList.map(dataList => {
-      const keyAddDataList = dataList.reduce((prev, current, index) => {
+  createList(type: string): stirng[] {
+    const columnList: stirng[] = type === 'batter' ? batterColumnList : pitcherColumnList;
+    const resultDataList: stirng[] = this.dataList.map(dataList => {
+      const keyAddDataList: stirng[] = dataList.reduce((prev, current, index) => {
         // eslint-disable-next-line no-param-reassign
         prev[columnList[index]] = current;
         return prev;

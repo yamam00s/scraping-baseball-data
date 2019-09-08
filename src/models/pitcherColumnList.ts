@@ -28,4 +28,4 @@ module.exports = [
   'AVG', // BATTING AVERAGE 被打率
   'K/BB	', // STRIKEOUTS-TO-WALK RATIO 奪三振÷与四球
   'WHIP', // (WALKS+HITS)÷INNINGS PITCHED 与四球+被安打）÷投球回
-];
+]: string[];

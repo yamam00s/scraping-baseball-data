@@ -25,7 +25,7 @@
         "quotes": [2, "single"],
         "single": { "allowTemplateLiterals": true },
         "no-console": "off",
-        "prettier/prettier": ["error", { "semi": true, "singleQuote": true }]
+        "prettier/prettier": ["error", { "semi": true, "singleQuote": true }],
     },
     "globals": {
         "document": true,
